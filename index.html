@@ -4,33 +4,28 @@
         <meta charset="utf-8">
         <title>Todoアプリ</title>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <main>
+        <main class="container">
         <h1>シンプルTODO</h1>
-        <form>
-            <input type="text" placeholder="やることを入力して Enter または 追加を押す" />
-            <button type="submit">追加</button>
+        <form id="todo-form">
+            <input id="todo-input" type="text" placeholder="やることを入力して Enter または 追加を押す" />
+            <button id="add-btn" type="submit">追加</button>
         </form>
-        <section>
-            <div>
-                <button>すべて</button>
-                <button>未完了</button>
-                <button>完了</button>
+        <section class="controls">
+            <div class="filters">
+                <button class="filter is-active">すべて</button>
+                <button class="filter">未完了</button>
+                <button class="filter">完了</button>
             </div>
             <div>
                 <span>0</span>件の未完了
                 <button>完了を一括削除</button>
             </div>
         </section>
-        <ul>
-            <li>
-                <input type="checkbox" />
-                <p>Javacriptの作成</p>
-                <button>削除</button>
-            </li>
+        <ul id="todo-list">
         </ul>
      </main>
     </body>
