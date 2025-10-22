@@ -16,12 +16,12 @@
         </form>
         <section class="controls">
             <div class="filters">
-                <button class="filter is-active">すべて</button>
-                <button class="filter">未完了</button>
-                <button class="filter">完了</button>
+                <button class="filter is-active" data-filter="all">すべて</button>
+                <button class="filter" data-filter="active">未完了</button>
+                <button class="filter" data-filter="completed">完了</button>
             </div>
             <div>
-                <span>0</span>件の未完了
+                <span id="left-count">0</span>件の未完了
                 <button>完了を一括削除</button>
             </div>
         </section>

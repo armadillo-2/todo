@@ -1,8 +1,11 @@
 const form = document.getElementById("todo-form");
 const input =  document.getElementById("todo-input");
 const list = document.getElementById("todo-list")
+const leftCount = document.getElementById("left-count")
+const filterButtons = document.querySelectorAll(".filter");
 let todos = [];
-function addTodo(title) {
+let currentFilter = "all";
+ function addTodo(title) {
     const trimmed = title.trim();
     if (!trimmed) return
     todos.unshift({ id: uid(),title: trimmed })
@@ -13,14 +16,20 @@ function removeTodo(id) {
     todos = todos.filter((item) => item.id !== id );
     render();
 }
-
+function filteredTodos() {
+    if (currentFilter === "active") return todos.filter(function (todo) {return !todo.completed; });
+     if (currentFilter === "completed") return todos.filter(function (todo) {return todo.completed; });
+     return todos;
+}
 function uid() {
     return Math.random().toString(36).slice(2, 9);
 };
 function render() {
+    leftCount.textContent = todos.filter(function (todo) {return !todo.completed;}).length;
     list.innerHTML ="";
-    for (let i = 0; i < todos.length; i++){
-        let item = todos[i]
+    const items = filteredTodos();
+    for (let i = 0; i < items.length; i++){
+        let item = items[i]
         let li =document.createElement('li');
         li.className = "todo-item"
         list.appendChild(li);
@@ -48,4 +57,12 @@ form.addEventListener("submit", function (e){
     addTodo( input.value );
     input.value = "";
 }); 
-
+filterButtons.forEach(function (currentBtn) {
+    currentBtn.addEventListener("click", function () {
+       filterButtons.forEach(function(btn) {
+        btn.classList.toggle("is-active", btn === currentBtn);
+     });
+     currentFilter = currentBtn.dataset.filter;
+     render()
+    });
+});
