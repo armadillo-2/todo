@@ -70,3 +70,12 @@ body {
     color: #9ca3af;
     text-decoration: line-through;
 }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 375px;
+  }
+  .filters {
+    margin-bottom: 16px;
+  }    
+}
