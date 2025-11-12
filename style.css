@@ -66,3 +66,7 @@ body {
     padding: 12px;
     border-bottom: 1px solid #f3f4f6;
 }
+.completed {
+    color: #9ca3af;
+    text-decoration: line-through;
+}
